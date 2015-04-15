@@ -35,20 +35,17 @@ public class FirstApp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		   request.setCharacterEncoding("UTF-8");
+		   PrintWriter pw = response.getWriter();
+		   Person person = Helper.getFormToObject(request, Person.class);
+		   pw.println(person.toString());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		   request.setCharacterEncoding("UTF-8");
-		   PrintWriter pw = response.getWriter();
-		   Person person = Helper.getFormToObject(request, Person.class);
-		   pw.println(person.toString());
-		   
-	
+		doGet(request,response);		   
 	}
 
 }
