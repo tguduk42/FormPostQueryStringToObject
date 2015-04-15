@@ -12,25 +12,10 @@ import com.google.gson.GsonBuilder;
 public class Helper {
 	public static <T> T getFormToObject(HttpServletRequest request,Class<T> clazz) throws UnsupportedEncodingException{
 		request.setCharacterEncoding("UTF-8");
-		List<String> tolist=new ArrayList<String>(request.getParameterMap().keySet());
-		String json = "{";
-		for(String key:tolist)
-		   {
-             if (!key.isEmpty() && key!=null)
-             {
-                 String item = "'" + key + "'" + ":" + "'" + request.getParameter(key) + "'" + ",";
-                 json = json + item;
-             }
-         }
-         json = json.substring(0,json.length() - 1);
-         json = json + "}";
-       
-         GsonBuilder builder = new GsonBuilder();
-         builder.setDateFormat("MM/dd/yy HH:mm:ss");
-         Gson gson = builder.create();
-         
-         
-		//T person = (T) new Gson().fromJson(json, type.getClass());
+		String json=getFormToJson(request);
+        GsonBuilder builder = new GsonBuilder();
+        builder.setDateFormat("MM/dd/yy HH:mm:ss");
+        Gson gson = builder.create(); 
 		return gson.fromJson(json, clazz);
 	}
 	
@@ -51,10 +36,6 @@ public class Helper {
 		
 		return json;
 	}
-	public <T> T wrap(T item){
-        //code for wrapping item
-        return item;
-    }
 
 
 	
