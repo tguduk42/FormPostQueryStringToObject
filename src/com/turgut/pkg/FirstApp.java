@@ -45,18 +45,7 @@ public class FirstApp extends HttpServlet {
 		// TODO Auto-generated method stub
 		   request.setCharacterEncoding("UTF-8");
 		   PrintWriter pw = response.getWriter();
-		   //Enumeration<String> listeler= request.getParameterNames();
-		    Person person = Helper.getFormToObject(request, Person.class);
-		   //Person person = new Gson().fromJson(json, Person.class);
-		  
-		   //List<String> tolist=new ArrayList<String>(request.getParameterMap().keySet());
-		   /*while (listeler.hasMoreElements()) {
-			   String param = (String) listeler.nextElement();
-			   String value=request.getParameter(param);
-			   pw.println("Parameter Name is '"+param+"' and Parameter Value is '"+value+"'");
-		    }*/
-		  
-		   
+		   Person person = Helper.getFormToObject(request, Person.class);
 		   pw.println(person.toString());
 		   
 	
